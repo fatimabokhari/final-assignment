@@ -30,7 +30,7 @@ jobs:
           git config --global user.name "${{ secrets.ACCESS_KEY}}"
           git config --global user.email "${{ secrets.SECRET_KEY }}"
         env:
-          GH_USERNAME: ${{ secret.ACCESS_KEY }}
+          GH_USERNAME: ${{ secrets.ACCESS_KEY }}
           GH_EMAIL: ${{ secrets.SECRET_KEY }}
 
       - name: Authenticate to GitHub Packages
