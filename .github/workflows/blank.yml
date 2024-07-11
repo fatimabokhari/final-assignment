@@ -23,6 +23,17 @@ jobs:
         with:
           terraform_version: 1.0.0
 
+      - name: Configure Git for GitHub Actions
+        run: |
+          git config --global user.name "${{ secrets.GH_USERNAME }}"
+          git config --global user.email "${{ secrets.GH_EMAIL }}"
+        env:
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+          GH_EMAIL: ${{ secrets.GH_EMAIL }}
+
+      - name: Authenticate to GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
+
       - name: Terraform Init
         run: terraform init
 
